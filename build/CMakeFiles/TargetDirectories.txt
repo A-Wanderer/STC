@@ -1,0 +1,6 @@
+/home/nanoo/Desktop/STC/do/do/build/CMakeFiles/rebuild_cache.dir
+/home/nanoo/Desktop/STC/do/do/build/CMakeFiles/edit_cache.dir
+/home/nanoo/Desktop/STC/do/do/build/CMakeFiles/SER.dir
+/home/nanoo/Desktop/STC/do/do/build/CMakeFiles/CLI.dir
+/home/nanoo/Desktop/STC/do/do/build/CMakeFiles/DATA.dir
+/home/nanoo/Desktop/STC/do/do/build/CMakeFiles/STC.dir
