@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/STC.dir/test_modu.cpp.o CMakeFiles/STC.dir/psk/STCControl.cpp.o CMakeFiles/STC.dir/psk/PskMod.cpp.o CMakeFiles/STC.dir/psk/MatrixControl.cpp.o  -o STC 

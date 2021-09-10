@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/DATA.dir/test_data.cpp.o  -o DATA 

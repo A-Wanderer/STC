@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/CLI.dir/client.cpp.o CMakeFiles/CLI.dir/web/WebClient.cpp.o CMakeFiles/CLI.dir/psk/PskMod.cpp.o CMakeFiles/CLI.dir/psk/MatrixControl.cpp.o  -o CLI 

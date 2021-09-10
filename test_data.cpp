@@ -8,7 +8,7 @@
 int main(int argc, const char** argv) {
 
     auto *ab = new StcDataMaker();
-    auto v = ab->getDataPtrVector(3);
+    auto v = ab->getDataPtrVector(3,3);
     for(auto u: *v){
         u->printData();
     }

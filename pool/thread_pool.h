@@ -9,7 +9,7 @@
 #include <assert.h>
 class ThreadPool {
 public:
-    explicit ThreadPool(size_t threadCount = 8): pool_(std::make_shared<Pool>()) {
+    explicit ThreadPool(size_t threadCount = 2): pool_(std::make_shared<Pool>()) {
             assert(threadCount > 0);
             for(size_t i = 0; i < threadCount; i++) {
                 std::thread([pool = pool_] {

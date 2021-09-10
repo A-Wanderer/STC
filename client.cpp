@@ -1,3 +1,6 @@
+#include "data/stcdatamaker.h"
+#include "stc/stc_control.h"
+#include "web/web_client.h"
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <string.h>
@@ -5,19 +8,36 @@
 #include <arpa/inet.h>
 #include <assert.h>
 #include <iostream>
-#include "data/stcdatamaker.h"
-#include "psk/STCControl.cpp"
-#include "WebClient.h"
+
 int main(int argc, char const *argv[])
 {
-    /* code */
-    const char* p = "192.168.71.129";
+    /*
+        假设信道衰落矩阵如下:
+        ((0.5,0.5) (0.5,0.5))
+    */
+    Eigen::MatrixXcd fade(1, 2);//fade
+    fade.real() << 0.5, 0.5;
+    fade.imag() << 0.5, 0.5;
+
+    /* prepare cli */
+    const char* p = "127.0.0.1";
     int port = 54321;
-    auto cli = WebClient(p,port);
-    cli.prepare();
-    auto a = StcDataMaker();
-    std::string c =static_cast<StcData*>(a.getRandomData())
-                            ->getStringStcData();
-    cli.sendMsg(c);
+    auto *cli = new WebClient(p,port);
+    cli->prepare();
+
+    /* prepare data */
+    auto *maker = new StcDataMaker();
+    auto *data =  static_cast<StcData*>(maker->getRandomData(5));
+
+    /* pskmod */
+    auto *control = new STCControl();
+    auto psk_data = control->dataModulate(8,*(data->getStcData()));
+
+    /* Start analog data incoming channel */
+    control->channelFade(psk_data, fade);
+
+    /* Send data to server */
+    auto *mat_control = new MatrixControl();
+    cli->sendMsg(mat_control->matrixXcdToString(psk_data));
     return 0;
 }

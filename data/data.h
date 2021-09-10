@@ -8,9 +8,13 @@ private:
     /* data */
 public:
     Data(/* args */) = default;
+
     ~Data() = default;
+
     virtual void* getData() = 0;
+
     virtual void setData(void*) = 0;
+
     virtual void printData() = 0;
 };
 

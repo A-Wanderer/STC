@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/SER.dir/server.cpp.o CMakeFiles/SER.dir/web/WebServer.cpp.o  -o SER  -lpthread 
