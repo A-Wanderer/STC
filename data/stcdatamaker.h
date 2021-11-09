@@ -7,6 +7,7 @@
 #include <vector>
 #include <iostream>
 #include <memory>
+#include <time.h>
 class StcDataMaker:public DataMaker
 {
 private:
@@ -17,6 +18,7 @@ public:
     ~StcDataMaker() = default;
 
     Data* getRandomData(int limit){
+        srand((unsigned)time(NULL));
         Data* tmp = new StcData();
         Eigen::MatrixXi* mat = new Eigen::MatrixXi(1,2);
         mat->setRandom();

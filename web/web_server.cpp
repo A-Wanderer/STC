@@ -80,9 +80,10 @@ void WebServer::dealRead(int fd) {
         if(len != 0){
             std::string str = buff, answer;
             Eigen::MatrixXcd psk_data = mat_control_->stringToMatrixXcd(str,1,2);
+            std::cout<<"receive data which cross fade channel : \n" << psk_data<<"\n";
             Eigen::MatrixXi &&mat =stc_control_->dataDeModulate(8,psk_data,fade_).adjoint();
             answer = mat_control_->matrixXiToString(mat);
-            std::cout<<answer<<"\n";
+            std::cout<<"receive std : " + answer<<"\n";
             LCritical("receive stc : " + answer);
         }
         closeConn(fd);

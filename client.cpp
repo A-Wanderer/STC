@@ -28,16 +28,17 @@ int main(int argc, char const *argv[])
     /* prepare data */
     auto *maker = new StcDataMaker();
     auto *data =  static_cast<StcData*>(maker->getRandomData(5));
-
+    std::cout<<"send msg :" + data->getStringStcData()<<"\n";
     /* pskmod */
     auto *control = new STCControl();
     auto psk_data = control->dataModulate(8,*(data->getStcData()));
 
+    std::cout<<"psk msg :\n" << psk_data<<"\n";
     /* Start analog data incoming channel */
     control->channelFade(psk_data, fade);
-
     /* Send data to server */
     auto *mat_control = new MatrixControl();
+    std::cout<<"msg cross fade channel :\n" << psk_data<<"\n";
     cli->sendMsg(mat_control->matrixXcdToString(psk_data));
     return 0;
 }
